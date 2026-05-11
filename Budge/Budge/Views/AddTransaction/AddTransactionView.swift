@@ -4,16 +4,28 @@ import SwiftData
 struct AddTransactionView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Query private var settings: [AppSetting]
+    @Query private var customCategories: [CustomCategory]
     @State private var viewModel = AddTransactionViewModel()
+    @Environment(PurchaseManager.self) private var purchaseManager
     @State private var showSavedConfirmation = false
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
                 typeToggle
-                amountDisplay
+                CalculatorDisplay(
+                    amountText: viewModel.amountText,
+                    currencyCode: viewModel.currencyCode,
+                    transactionType: viewModel.selectedType
+                )
                 categoryGrid
                 noteField
+                Spacer()
+                CalculatorKeyboard(
+                    amountText: $viewModel.amountText,
+                    currencyCode: viewModel.currencyCode
+                )
                 saveButton
             }
             .padding()
@@ -32,6 +44,14 @@ struct AddTransactionView: View {
                     Text("\(progress.name) recorded successfully")
                 }
             }
+            .onAppear {
+                viewModel.currencyCode = settings.first?.currencyCode ?? "USD"
+                viewModel.customCategories = customCategories
+                viewModel.isPro = purchaseManager.isPro
+            }
+            .onChange(of: purchaseManager.isPro) {
+                viewModel.isPro = purchaseManager.isPro
+            }
         }
     }
 
@@ -41,12 +61,6 @@ struct AddTransactionView: View {
             Text("Income").tag(Transaction.TransactionType.income)
         }
         .pickerStyle(.segmented)
-    }
-
-    private var amountDisplay: some View {
-        Text(formatAmount(viewModel.amountText))
-            .font(.system(size: 48, weight: .bold, design: .rounded))
-            .foregroundStyle(viewModel.selectedType == .expense ? Color("BudgetOrange") : Color("BudgetGreen"))
     }
 
     private var categoryGrid: some View {
@@ -86,10 +100,5 @@ struct AddTransactionView: View {
         if viewModel.save(context: modelContext) != nil {
             showSavedConfirmation = true
         }
-    }
-
-    private func formatAmount(_ text: String) -> String {
-        let value = Decimal(string: text) ?? 0
-        return CurrencyFormatter.format(value)
     }
 }

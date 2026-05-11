@@ -4,11 +4,16 @@ import SwiftData
 struct ContentView: View {
     @Query private var settings: [AppSetting]
     @State private var selectedTab = 0
+    @State private var isUnlocked = false
 
     var body: some View {
         Group {
             if let setting = settings.first, setting.hasCompletedOnboarding {
-                mainTabView
+                if setting.biometricEnabled && !isUnlocked {
+                    BiometricLockView(onSuccess: { isUnlocked = true })
+                } else {
+                    mainTabView
+                }
             } else {
                 WelcomeView()
             }

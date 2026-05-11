@@ -22,8 +22,6 @@ struct BudgetProgress {
 
     static func calculate(spent: Decimal, budget: Decimal, daysElapsed: Int, totalDaysInMonth: Int) -> BudgetProgress {
         let percentage = budget > 0 ? Double(truncating: (spent / budget * 100) as NSNumber) : 0
-        let daysRemaining = max(totalDaysInMonth - daysElapsed, 1)
-        let dailyBudget = (budget - spent) / Decimal(daysRemaining)
 
         let status: BudgetStatus
         let encouragement: String

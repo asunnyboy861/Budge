@@ -7,6 +7,9 @@ final class AddTransactionViewModel {
     var selectedType: Transaction.TransactionType = .expense
     var selectedCategory: CategoryItem?
     var note = ""
+    var currencyCode = "USD"
+    var isPro = false
+    var customCategories: [CustomCategory] = []
 
     var canSave: Bool {
         let amount = Decimal(string: amountText) ?? 0
@@ -14,11 +17,19 @@ final class AddTransactionViewModel {
     }
 
     var expenseCategories: [CategoryItem] {
-        Constants.Category.expenseCategories.map { CategoryItem(name: $0.name, icon: $0.icon, type: .expense) }
+        CategoryManager.getAllCategories(
+            type: .expense,
+            customCategories: customCategories,
+            isPro: isPro
+        )
     }
 
     var incomeCategories: [CategoryItem] {
-        Constants.Category.incomeCategories.map { CategoryItem(name: $0.name, icon: $0.icon, type: .income) }
+        CategoryManager.getAllCategories(
+            type: .income,
+            customCategories: customCategories,
+            isPro: isPro
+        )
     }
 
     var currentCategories: [CategoryItem] {

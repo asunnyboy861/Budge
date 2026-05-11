@@ -8,6 +8,13 @@ final class TodayViewModel {
     var insights: [TrendData.TrendInsight] = []
     var currencyCode = "USD"
 
+    var currentDateFormatted: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: .now)
+    }
+
     func load(expenses: [Transaction], budgets: [Budget], settings: [AppSetting]) {
         let setting = settings.first
         currencyCode = setting?.currencyCode ?? "USD"

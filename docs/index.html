@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budge - Landing</title>
+    <title>Budge - Simple Budget Tracker</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #1a1a1a; background: #fff; }
-        .landing-hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+        .landing-hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(135deg, #34C759 0%, #30B350 100%); color: #fff; }
         .landing-hero h1 { font-size: 3em; margin: 0 0 16px; color: #fff; border: none; }
-        .tagline { font-size: 1.4em; opacity: 0.9; margin: 0 0 32px; }
+        .tagline { font-size: 1.4em; opacity: 0.95; margin: 0 0 32px; }
         .download-btn { display: inline-block; background: #000; color: #fff !important; padding: 14px 32px; border-radius: 12px; font-size: 1.1em; font-weight: 600; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
         .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); text-decoration: none; }
         .features { max-width: 900px; margin: 0 auto; padding: 60px 20px; text-align: center; }
@@ -23,7 +23,7 @@
         .pricing h2 { font-size: 2em; margin-bottom: 40px; color: #1a1a1a; }
         .pricing-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .pricing-card { background: #fff; padding: 30px 40px; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); min-width: 220px; }
-        .pricing-card.featured { border: 2px solid #667eea; }
+        .pricing-card.featured { border: 2px solid #34C759; }
         .pricing-card h3 { margin: 0 0 12px; color: #1a1a1a; }
         .price { font-size: 2.5em; font-weight: 700; margin: 0; color: #1a1a1a; }
         .price span { font-size: 0.4em; color: #666; }
@@ -42,7 +42,7 @@
 <body>
 <div class="landing-hero">
         <h1>Budge</h1>
-        <p class="tagline">Track spending in seconds, stay on budget effortlessly</p>
+        <p class="tagline">Track spending in seconds. Stay on budget effortlessly.</p>
         <a id="download-btn" href="https://apps.apple.com/us/app/id[APP_STORE_ID]?mt=8" class="download-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:8px">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -57,33 +57,33 @@
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>One-Tap Logging</h3>
-                <p>Record any expense in under 3 seconds with smart categories and quick amounts</p>
+                <p>Record any expense in under 3 seconds. Just tap a category and enter an amount — no forms, no accounts to link.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
-                <h3>Smart Trends</h3>
-                <p>See 90-day spending patterns and get personalized insights to improve your habits</p>
+                <h3>90-Day Trends</h3>
+                <p>Visualize your spending patterns over time. Spot trends, see which categories are growing, and get actionable insights.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>Budget Encouragement</h3>
-                <p>Positive feedback that keeps you motivated — never feel judged about your spending</p>
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>All data stays on your device. No accounts, no cloud uploads unless you choose iCloud sync. Your finances, your control.</p>
             </div>
         </div>
     </div>
 
     <div class="pricing">
-        <h2>Pricing</h2>
+        <h2>Budge Pro</h2>
         <div class="pricing-grid">
-            <div class="pricing-card featured">
+            <div class="pricing-card">
                 <h3>Monthly</h3>
                 <p class="price">$1.99<span>/month</span></p>
                 <p class="price-note">Auto-renewing, cancel anytime</p>
             </div>
-            <div class="pricing-card">
+            <div class="pricing-card featured">
                 <h3>Yearly</h3>
                 <p class="price">$9.99<span>/year</span></p>
-                <p class="price-note">Save 58% compared to monthly</p>
+                <p class="price-note">Save 58% — just $0.83/month</p>
             </div>
         </div>
     </div>
@@ -112,11 +112,8 @@
     </script>
 
     <div class="footer">
-        <p>&copy; <span id="year"></span> Budge. All rights reserved.</p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Budge. All rights reserved.</p>
         <p>Contact: <a href="mailto:iocompile67692@gmail.com">iocompile67692@gmail.com</a></p>
     </div>
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>

@@ -16,7 +16,7 @@ final class AppSetting {
         reminderEnabled: Bool = true,
         reminderTime: Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: .now) ?? .now,
         biometricEnabled: Bool = false,
-        iCloudSyncEnabled: Bool = true,
+        iCloudSyncEnabled: Bool = false,
         hasCompletedOnboarding: Bool = false
     ) {
         self.id = UUID()
